@@ -7,27 +7,38 @@ public class KodePos
 {
     private Dictionary<string, string> kodePosDictionary;
 
-    public KodePos()
+    public enum Kelurahan
     {
-        kodePosDictionary = new Dictionary<string, string>()
-        {
-            {"Batununggal", "40266"},
-            {"Kujangsari", "40287"},
-            {"Mengger", "40267"},
-            {"Wates", "40256"},
-            {"Cijaura", "40287"},
-            {"Jatisari", "40286"},
-            {"Margasari", "40286"},
-            {"Sekejati", "40286"},
-            {"Kebonwaru", "40272"},
-            {"Maleer", "40274"},
-            {"Samoja", "40273"}
-        };
+        Batununggal,
+        Kujangsari,
+        Mengger,
+        Wates,
+        Cijaura,
+        Jatisari, Margasari, Sekejati, Kebonwaru, Maleer, Samoja
     }
 
-    public string GetKodePos(string kelurahan)
+    public string GetKodePos(Kelurahan kelurahan)
     {
-        return kodePosDictionary.ContainsKey(kelurahan) ? kodePosDictionary[kelurahan] : "Kode Pos Tidak Ditemukan";
+        String[] kodePos =
+            {
+            "40266", // Batununggal
+            "40287", // Kujangsari
+            "40267", // Mengger
+            "40256", // Wates
+            "40287", // Cijaura
+            "40286", // Jatisari
+            "40286", // Margasari
+            "40286", // Sekejati
+            "40272", // Kebonwaru
+            "40274", // Maleer
+            "40273"  // Samoja
+            };
+        int index = (int)kelurahan;
+        if (index >= 0 && index < kodePos.Length)
+        {
+            return kodePos[index];
+        }
+        return "Kode Pos Tidak Ditemukan";
     }
 }
 
